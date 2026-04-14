@@ -143,17 +143,34 @@ def delete_habit(habit_id: int):
     conn.close()
 
 
-def add_completion(habit_id: int, d: date | None = None):
+def add_completion(habit_id: int, d: date | None = None) -> bool:
+    """
+    Добавляет отметку о выполнении, если её еще нет за этот день.
+    Возвращает True, если отметка добавлена, и False, если уже была.
+    """
     if d is None:
         d = date.today()
+    
     conn = get_connection()
     cur = conn.cursor()
+    
+    # Проверяем, есть ли уже запись за эту дату
+    cur.execute(
+        "SELECT id FROM completions WHERE habit_id = ? AND date = ?",
+        (habit_id, d.isoformat()),
+    )
+    if cur.fetchone():
+        conn.close()
+        return False  # Уже отмечено сегодня
+    
     cur.execute(
         "INSERT INTO completions (habit_id, date) VALUES (?, ?)",
         (habit_id, d.isoformat()),
     )
     conn.commit()
     conn.close()
+    
+    return True  # ОБЯЗАТЕЛЬНО: возвращаем True, чтобы бот знал об успехе!
 
 
 def get_stats_basic(habit_id: int):

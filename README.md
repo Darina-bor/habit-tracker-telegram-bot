@@ -53,27 +53,27 @@ habit-tracker-bot/
 
 ---
 
-##🚀 Запуск проекта
+## 🚀 Запуск проекта
 
-###Клонировать репозиторий:
+### Клонировать репозиторий:
 git clone [https://github.com/Darina-bor/habit-tracker-telegram-bot.git](https://github.com/Darina-bor/habit-tracker-telegram-bot.git)
 cd habit-tracker-telegram-bot
 
-###Настроить окружение (macOS):
+### Настроить окружение (macOS):
 python3 -m venv venv
 source venv/bin/activate
 
-###Установить зависимости:
+### Установить зависимости:
 pip install aiogram matplotlib python-dotenv
 Настроить токен:
 Создайте файл .env и добавьте: BOT_TOKEN=ваш_токен_от_BotFather.
 
-###Запустить:
+### Запустить:
 python3 bot.py
 
 ---
 
-##🔧 План расширения
+## 🔧 План расширения
 [ ] Индивидуальные PDF-отчеты с расширенной инфографикой.
 
 [ ] Групповые привычки для совместного прохождения челенджей.
@@ -82,6 +82,6 @@ python3 bot.py
 
 ---
 
-##👩‍💻 Авторы
+## 👩‍💻 Авторы
 Дарина Бородина и Самбулова Марина.
 Разработано в рамках курса: Разработка ИТ-систем / Python / Telegram Bot API.
